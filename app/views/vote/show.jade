@@ -1,0 +1,75 @@
+extends ../layouts/default
+
+block main
+  h1 “义工大讲坛”坛主契约
+
+block content       
+  .row
+    .span2 &nbsp
+    .span8
+      p       您好！为了加深彼此的了解，也为了以后我们能更好的开展义工大讲坛的工作，我们真诚地邀请您填写这份契约。十分感谢您抽出宝贵的时间，达成我们的愿望。
+
+        .control-group-view
+          label.user-label(for='name') 姓名:
+          .user-control
+            span= vote.name
+
+          label.user-label(for='team') 义工队名:
+          .user-control
+            span= vote.team
+
+        .control-group-view
+          label.user-label(for='sex') 性别:
+          .user-control
+            span= vote.sex
+
+          label.user-label(for='tel') 联系电话:
+          .user-control
+            span= vote.tel
+
+        .control-group-view
+          span= qses['qs1'].title
+          br
+          .answer
+            span= vote.qs1
+
+        .control-group-view
+          span= qses['qs2'].title
+          br
+          .answer
+            span= vote.qs2
+
+        .control-group-view
+          span= qses['qs3'].title
+          br
+          .answer
+            span= vote.qs3
+
+        .control-group-view
+          span= qses['qs4'].title
+          br
+          .answer
+            span= vote.qs4
+
+        .control-group-view
+          span= qses['qs5'].title
+          br
+          .answer
+            span= vote.qs5
+
+        .control-group-view
+          span= qses['qs6'].title
+          br
+          .answer
+            span= vote.qs6
+
+        .control-group-view
+          span= qses['qs7'].title
+          br
+          .answer
+            span= vote.qs7
+
+    .span2 &nbsp
+
+  .form-actions
+    a.btn(href="javascript:window.close()") 关闭

@@ -1,0 +1,31 @@
+extends ../layouts/default
+
+block main
+  h1= title
+
+block content
+  center
+    if (votes.length > 0)
+      table.tbList
+        tr.head
+          th(style="width:20%") 姓名
+          th(style="width:10%") 性别
+          th(style="width:30%") 义工队名
+          th(style="width:20%") 提交时间
+          th(style="width:20%") 查看
+
+        each vote in votes
+          tr
+            td= vote.name
+            td= vote.sex
+            td= vote.team
+            td= formatDate(vote.createdAt, "%b %d, %Y at %I:%M %p")
+            td
+              a(href='/survey/show/'+vote._id, title=vote.name, target='_blank') 查看
+
+      if (pages > 1)
+        .pagination
+          ul
+            != createPagination(pages, page)
+    else
+      还没有任何调查问卷数据

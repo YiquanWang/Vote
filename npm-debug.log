@@ -1,0 +1,33 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start' ]
+2 info using npm@1.1.61
+3 info using node@v0.8.15
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 verbose read json E:\Demo\Vote\package.json
+6 warn package.json noobjs@3.0.0 No README.md file found!
+7 verbose run-script [ 'prestart', 'start', 'poststart' ]
+8 info prestart noobjs@3.0.0
+9 info start noobjs@3.0.0
+10 verbose unsafe-perm in lifecycle true
+11 silly exec cmd "/c" "./node_modules/.bin/nodemon server.js"
+12 silly cmd,/c,./node_modules/.bin/nodemon server.js,E:\Demo\Vote spawning
+13 info noobjs@3.0.0 Failed to exec start script
+14 error noobjs@3.0.0 start: `./node_modules/.bin/nodemon server.js`
+14 error `cmd "/c" "./node_modules/.bin/nodemon server.js"` failed with 1
+15 error Failed at the noobjs@3.0.0 start script.
+15 error This is most likely a problem with the noobjs package,
+15 error not with npm itself.
+15 error Tell the author that this fails on your system:
+15 error     ./node_modules/.bin/nodemon server.js
+15 error You can get their info via:
+15 error     npm owner ls noobjs
+15 error There is likely additional logging output above.
+16 error System Windows_NT 6.1.7601
+17 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
+18 error cwd E:\Demo\Vote
+19 error node -v v0.8.15
+20 error npm -v 1.1.61
+21 error code ELIFECYCLE
+22 verbose exit [ 1, true ]

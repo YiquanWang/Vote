@@ -1,0 +1,113 @@
+extends ../layouts/default
+
+block main
+  h1= title
+
+block content
+
+  p 本次调查问卷共有 #{gender.totle} 人参加
+
+  ul.vote-result-box
+    li
+      label 男
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(gender.male/gender.totle, true)}")
+          span.vote-percent-detail= gender.male + '(' + formatPercent(gender.male/gender.totle)+ ')'
+    li
+      label 女
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(gender.female/gender.totle, true)}")
+          span.vote-percent-detail= gender.female + '(' + formatPercent(gender.female/gender.totle)+ ')'
+
+  p= qses['qs1'].title
+
+  ul.vote-result-box
+    li
+      label 愿意
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(qs1.a/qs1.totle, true)}")
+          span.vote-percent-detail= qs1.a + '(' + formatPercent(qs1.a/qs1.totle)+ ')'
+    li
+      label 不愿意
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(qs1.b/qs1.totle, true)}")
+          span.vote-percent-detail= qs1.b + '(' + formatPercent(qs1.b/qs1.totle)+ ')'
+    li
+      label 未选择
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(qs1.none/qs1.totle, true)}")
+          span.vote-percent-detail= qs1.none + '(' + formatPercent(qs1.none/qs1.totle)+ ')'
+ 
+
+  p= qses['qs2'].title
+
+  ul.vote-result-box
+    li
+      label 星期一
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(qs2.a/qs2.totle, true)}")
+          span.vote-percent-detail= qs2.a + '(' + formatPercent(qs2.a/qs2.totle)+ ')'
+    li
+      label 星期二
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(qs2.b/qs2.totle, true)}")
+          span.vote-percent-detail= qs2.b + '(' + formatPercent(qs2.b/qs2.totle)+ ')'
+    li
+      label 星期三
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(qs2.c/qs2.totle, true)}")
+          span.vote-percent-detail= qs2.c + '(' + formatPercent(qs2.c/qs2.totle)+ ')'
+    li
+      label 星期四
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(qs2.d/qs2.totle, true)}")
+          span.vote-percent-detail= qs2.d + '(' + formatPercent(qs2.d/qs2.totle)+ ')'
+    li
+      label 星期五
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(qs2.e/qs2.totle, true)}")
+          span.vote-percent-detail= qs2.e + '(' + formatPercent(qs2.e/qs2.totle)+ ')'
+    li
+      label 星期六
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(qs2.f/qs2.totle, true)}")
+          span.vote-percent-detail= qs2.f + '(' + formatPercent(qs2.f/qs2.totle)+ ')'
+    li
+      label 星期日
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(qs2.g/qs2.totle, true)}")
+          span.vote-percent-detail= qs2.g + '(' + formatPercent(qs2.g/qs2.totle)+ ')'
+    li
+      label 未选择
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(qs2.none/qs2.totle, true)}")
+          span.vote-percent-detail= qs2.none + '(' + formatPercent(qs2.none/qs2.totle)+ ')'
+
+  p= qses['qs3'].title 
+
+  ul.vote-result-box
+    li
+      label 专业技能
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(qs3.a/qs3.totle, true)}")
+          span.vote-percent-detail= qs3.a + '(' + formatPercent(qs3.a/qs3.totle)+ ')'
+    li
+      label 人生经验
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(qs3.b/qs3.totle, true)}")
+          span.vote-percent-detail= qs3.b + '(' + formatPercent(qs3.b/qs3.totle)+ ')'
+    li
+      label 休闲娱乐
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(qs3.c/qs3.totle, true)}")
+          span.vote-percent-detail= qs3.c + '(' + formatPercent(qs3.c/qs3.totle)+ ')'
+    li
+      label 其他
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(qs3.d/qs3.totle, true)}")
+          span.vote-percent-detail= qs3.d + '(' + formatPercent(qs3.d/qs3.totle)+ ')'
+    li
+      label 未选择
+      .vote-pervent
+        .vote-percent-inner(style="#{'width: '+ formatPercent(qs1.none/qs3.totle, true)}")
+          span.vote-percent-detail= qs3.none + '(' + formatPercent(qs3.none/qs3.totle)+ ')'

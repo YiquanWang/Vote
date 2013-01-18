@@ -1,0 +1,162 @@
+extends ../layouts/default
+
+block main
+  h1 “义工大讲坛”坛主契约
+
+block content
+  
+  - var action = '/survey'
+
+  if (typeof errors !== 'undefined')
+    .fade.in.alert.alert-block.alert-error
+      a.close(data-dismiss="alert", href="javascript:void(0)") x
+      ul
+        each error in errors
+          li= error.type
+
+
+  form.form-horizontal(method="post", action=action, enctype="multipart/form-data")          
+    .row
+      .span2 &nbsp
+      .span8
+        p       您好！为了加深彼此的了解，也为了以后我们能更好的开展义工大讲坛的工作，我们真诚地邀请您填写这份契约。十分感谢您抽出宝贵的时间，达成我们的愿望。
+
+          .control-group
+            label.user-label(for='name') 姓名:
+            .user-control
+              input#name.input-medium(type='text', name="name")
+
+            label.user-label(for='team') 义工队名:
+            .user-control
+              input#team.input-medium(type='text', name="team")
+
+          .control-group
+            label.user-label(for='sex') 性别:
+            .user-control
+              .sex-control
+                input(type='radio', name="sex", id="sex-man", value='男')
+              label.sex-label(for="sex-man") 男
+              .sex-control
+                input(type='radio', name="sex", id="sex-woman", value='女')
+              label.sex-label(for="sex-woman") 女
+
+            label.user-label(for='tel') 联系电话:
+            .user-control
+              input#tel.input-medium(type='text', name="tel")
+
+          each qs in qses
+            .control-group
+              span #{qs.title}
+
+              if qs._key == 'qs2'
+                span (可多选)
+
+              br
+              - var i = 0
+              each content in qs.content
+                - i++
+                .qs-control
+                  if qs.type == 'check'
+                    input(type='checkbox', name="#{qs._key}", id="#{qs._key+'-'+i}", value='#{content}')
+                  else
+                    input(type='radio', name="#{qs._key}", id="#{qs._key+'-'+i}", value='#{content}')
+                label.qs-label(for="#{qs._key+'-'+i}")= content
+                if (i%4 == 0)
+                  br(style="clear:both")
+
+
+              - var j = 0
+              each mix in qs.mix
+                - i++
+                - j++
+
+                if ((j-1)%2 == 0)
+                  br(style="clear:both")
+
+                .qs-control
+                  input.mix-input(type='checkbox', name="#{qs._key}", id="#{qs._key+'-'+i}", value='#{mix}')
+                label.qs-label(for="#{qs._key+'-'+i}")= mix
+                .qs-mix-control
+                  input.input-medium(type='text', name="#{qs._key}", disabled="disabled" , id="#{'txt-'+qs._key+'-'+i}")
+
+              if qs.type == 'text'
+                br
+                textarea.input-xxlarge(type='text', rows="5", name="#{qs._key}")
+
+      .span2 &nbsp
+
+    .form-actions
+      button.btn.btn-primary(type='submit') 提交
+
+
+    script(type="text/javascript")
+      $(function() {
+        $('[name="name"]').val('#{vote.name}');
+        $('[name="team"]').val('#{vote.team}');
+        $('[name="sex"][value="#{vote.sex}"]').attr('checked','checked');
+        $('[name="tel"]').val('#{vote.tel}');
+        $('[name="qs1"][value="#{vote.qs1}"]').attr('checked','checked');
+
+        $('[name="qs2"]').each(function(){
+          if('#{vote.qs2}'.indexOf($(this).val()) >=0){
+            $(this).attr('checked','checked');
+          }
+        })
+
+        $('[name="qs3"]').each(function(){
+          if('#{vote.qs3}'.indexOf($(this).val()) >=0){
+            $(this).attr('checked','checked');
+            if($(this).val() == '其他'){
+              $("#txt-qs3-4").removeAttr('disabled');
+              $("#txt-qs3-4").val('#{vote.qs3}'.split(':')[1]);
+            }
+
+          }
+
+        })
+
+        $('[name="qs4"]').each(function(){
+          if('#{vote.qs4}'.indexOf($(this).val()) >=0){
+            $(this).attr('checked','checked');
+            var ansarry = '#{vote.qs4}'.split(', ');
+
+            if($(this).val() == 'QQ'){
+              $("#txt-qs4-1").removeAttr('disabled');
+              for(var ans in ansarry){
+                if(ansarry[ans].indexOf('QQ') >=0){
+                  $("#txt-qs4-1").val(ansarry[ans].split(':')[1]);
+                }
+              }             
+            }
+            if($(this).val() == '邮箱'){
+              $("#txt-qs4-2").removeAttr('disabled');
+              for(var ans in ansarry){
+                if(ansarry[ans].indexOf('邮箱') >=0){
+                  $("#txt-qs4-2").val(ansarry[ans].split(':')[1]);
+                }
+              } 
+            }
+            if($(this).val() == 'MSN'){
+              $("#txt-qs4-3").removeAttr('disabled');
+              for(var ans in ansarry){
+                if(ansarry[ans].indexOf('MSN') >=0){
+                  $("#txt-qs4-3").val(ansarry[ans].split(':')[1]);
+                }
+              } 
+            }
+            if($(this).val() == '其他'){
+              $("#txt-qs4-4").removeAttr('disabled');
+              for(var ans in ansarry){
+                if(ansarry[ans].indexOf('其他') >=0){
+                  $("#txt-qs4-4").val(ansarry[ans].split(':')[1]);
+                }
+              } 
+            }
+          }
+        })
+
+
+        $('[name="qs5"]').val('#{vote.qs5}');
+        $('[name="qs6"]').val('#{vote.qs6}');
+        $('[name="qs7"]').val('#{vote.qs7}');
+      })
